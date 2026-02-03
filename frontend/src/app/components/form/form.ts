@@ -31,7 +31,28 @@ export class Form implements OnInit, AfterViewInit {
       contactPhone: ''
     };
 
-  products = ['Electronics', 'Clothing', 'Home & Kitchen', 'Books', 'Sports & Outdoors', 'Beauty', 'Toys & Games', 'Health', 'Automotive', 'Office Supplies'];
+ products = [
+  'Laptop Dell Inspiron 15',
+  'iPhone 13',
+  'Samsung Galaxy A54',
+  'Wireless Bluetooth Headphones',
+  'Smart TV 50" Samsung',
+  'Office Chair Ergonomic',
+  'Mechanical Keyboard',
+  'Wireless Mouse Logitech',
+  'Air Fryer Philips',
+  'Coffee Maker Oster',
+  'Running Shoes Nike',
+  'Yoga Mat Non-Slip',
+  'Backpack for Laptop',
+  'Water Bottle Stainless Steel',
+  'Desk Lamp LED',
+  'External Hard Drive 1TB',
+  'USB-C Fast Charger',
+  'Noise Cancelling Earbuds',
+  'Fitness Smartwatch',
+  'Electric Toothbrush'
+];
   paymentMethods = ['Cash', 'Card', 'Bank transfer'];
 
  constructor(

@@ -18,9 +18,16 @@ Aplicación fullstack para gestionar pedidos con Angular y .NET
 
 ## Requisitos previos
 
-- Node.js (v18+)
-- .NET 10 SDK
-- SQL Server LocalDB (viene con Visual Studio)
+Instalar antes de clonar el proyecto:
+
+| Requisito | Descarga |
+|-----------|----------|
+| Node.js (v18+) | https://nodejs.org/ |
+| .NET 10 SDK | https://dotnet.microsoft.com/download |
+| Visual Studio 2022 | https://visualstudio.microsoft.com/ |
+| Angular CLI | `npm install -g @angular/cli` |
+
+> SQL Server LocalDB viene incluido con Visual Studio
 
 ## Cómo correr la aplicación
 
@@ -97,6 +104,11 @@ cd frontend
 npm install
 ng serve
 ```
+
+El `npm install` instala automáticamente:
+- Leaflet (mapas)
+- SweetAlert2 (alertas)
+- Tailwind CSS
 
 El frontend corre en: `http://localhost:4200`
 

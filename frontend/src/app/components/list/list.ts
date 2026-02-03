@@ -40,9 +40,11 @@ export class List implements OnInit {
   get filteredOrders(): Order[] {
     if (!this.searchTerm) return this.orders;
     const term = this.searchTerm.toLowerCase();
+    //busqueda por nombre, id o producto
     return this.orders.filter(o =>
       o.customerName.toLowerCase().includes(term) ||
-      o.customerId.toLowerCase().includes(term)
+      o.customerId.toLowerCase().includes(term) ||
+      o.product.toLowerCase().includes(term)
     );
   }
 //Decidi usar sweetalert2 para las alertas de confirmacion, porque usando window.confirm no podia personalizar los botones o me generaba error
