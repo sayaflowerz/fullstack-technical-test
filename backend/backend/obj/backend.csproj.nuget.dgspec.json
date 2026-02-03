@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\moise\\OneDrive\\Documentos\\GitHub\\fullstack-technical-test\\backend\\backend\\backend.csproj": {}
+    "C:\\Users\\sayaf\\Documents\\fullstack-technical-test\\backend\\backend\\backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\moise\\OneDrive\\Documentos\\GitHub\\fullstack-technical-test\\backend\\backend\\backend.csproj": {
+    "C:\\Users\\sayaf\\Documents\\fullstack-technical-test\\backend\\backend\\backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\moise\\OneDrive\\Documentos\\GitHub\\fullstack-technical-test\\backend\\backend\\backend.csproj",
+        "projectUniqueName": "C:\\Users\\sayaf\\Documents\\fullstack-technical-test\\backend\\backend\\backend.csproj",
         "projectName": "backend",
-        "projectPath": "C:\\Users\\moise\\OneDrive\\Documentos\\GitHub\\fullstack-technical-test\\backend\\backend\\backend.csproj",
-        "packagesPath": "C:\\Users\\moise\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\moise\\OneDrive\\Documentos\\GitHub\\fullstack-technical-test\\backend\\backend\\obj\\",
+        "projectPath": "C:\\Users\\sayaf\\Documents\\fullstack-technical-test\\backend\\backend\\backend.csproj",
+        "packagesPath": "C:\\Users\\sayaf\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\sayaf\\Documents\\fullstack-technical-test\\backend\\backend\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\moise\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\sayaf\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -53,6 +53,24 @@
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[10.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[10.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[10.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[10.0.2, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[10.1.1, )"
             }
           },
           "imports": [

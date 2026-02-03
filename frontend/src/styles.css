@@ -1,3 +1,103 @@
-/* You can add global styles to this file, and also import other style files */
 
-@import "tailwindcss";
+  @import "tailwindcss";      
+  @import 'leaflet/dist/leaflet.css';                                                                                                                                   
+  html, body {                                                                                                                                                
+    height: 100%;
+    margin: 0;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  app-root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  main {
+    flex: 1;
+  }
+   body {
+    margin: 0;                                                                                                                                                                                           
+    min-height: 100vh;
+    background: linear-gradient(45deg, #1a1a2e, #16213e);
+    overflow-x: hidden;
+  } body {                                                                                                                                                                                                     margin: 0;
+    min-height: 100vh;                                                                                                                                                                                   
+    background: #6985ff;
+    overflow-x: hidden;
+  }
+
+  body::before,
+  body::after {
+    content: "";
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: -1;
+    opacity: 0.7;
+  }
+
+  body::before {
+    background: #9dd8db;
+    top: -200px;
+    left: -100px;
+    animation: move1 8s infinite ease-in-out;
+  }
+
+  body::after {
+    background: #0051ff;
+    bottom: -200px;
+    right: -100px;
+    animation: move2 10s infinite ease-in-out;
+  }
+
+  @keyframes move1 {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(300px, 400px); }
+    100% { transform: translate(0, 0); }
+  }
+
+  @keyframes move2 {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(-300px, -300px); }
+    100% { transform: translate(0, 0); }
+  }
+
+.glass {
+  background: rgb(255, 255, 255);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.glass {
+  background: rgba(252, 252, 252, 0.411);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.glass h1,
+.glass label {
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.glass input,
+.glass select {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+}
+
+.glass input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}

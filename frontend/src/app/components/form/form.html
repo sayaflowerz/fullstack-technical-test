@@ -1,0 +1,126 @@
+<div class="p-4 w-200 mx-auto rounded-lg glass text-black ">
+     <h1 class="text-2xl font-bold text-gray-800 mb-6 text-center text-black">{{ isEditMode ? 'Edit Order' : 'Create Order' }}</h1>
+
+    <form (ngSubmit)="onSubmit()" #orderForm="ngForm" class="space-y-4">
+      <div class="text-black">
+        <label class="block text-sm font-medium text-gray-700 mb-1">Client name</label>
+        <input type="text" [(ngModel)]="order.customerName" name="customerName" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <span *ngIf="orderForm.controls['customerName']?.invalid && orderForm.controls['customerName']?.touched" class="text-red-500 text-sm">
+          Client name is required
+        </span> 
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Client ID</label>
+        <input type="text" [(ngModel)]="order.customerId" name="customerId" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"> 
+        <span *ngIf="orderForm.controls['customerId']?.invalid && orderForm.controls['customerId']?.touched" class="text-red-500 text-sm">
+          Client ID is required
+        </span>    
+      </div>
+
+      <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Product</label>
+          <div class="relative">
+            <button type="button"
+                    (click)="showProductDropdown = !showProductDropdown"
+                    class="w-full px-4 py-2.5  border border-gray-300 rounded-lg text-left flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-blue-500 ">
+              <span [class]="order.product ? 'text-white' : 'text-white' ">
+                {{ order.product || 'Select a product' }}
+              </span>
+              <svg class="w-5 h-5 text-white"
+                  [class.rotate-180]="showProductDropdown"
+                  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+
+            <div *ngIf="showProductDropdown"
+                class="w-full mt-2 rounded-lg shadow-lg overflow-hidden"
+                style="background: rgba(255, 255, 255, 0.199);">
+              <div *ngFor="let p of products"
+                      (click)="selectProduct(p)"
+                      class="px-4 py-3 cursor-pointer flex items-center justify-between transition-colors hover:bg-blue-500/20"
+                      [style.background]="order.product === p ? 'rgba(100,150,255,0.2)' : 'transparent'">
+                    <span class="text-white">{{ p }}</span>
+                    <svg *ngIf="order.product === p" class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 0 1 0 1.414l-8 8a1 1 0 0 1-1.414 0l-4-4a1 1 0 0 1 1.414-1.414L8 12.586l7.293-7.293a1 1 0 0 1 1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <span *ngIf="orderForm.controls['product']?.invalid && orderForm.controls['product']?.touched" class="text-red-500 text-sm">
+                Product is required
+              </span>
+            </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Quantity</label>
+        <input type="number" [(ngModel)]="order.quantity" name="quantity" min="1" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2focus:ring-blue-500">
+        <span *ngIf="orderForm.controls['quantity']?.invalid && orderForm.controls['quantity']?.touched" class="text-red-500 text-sm">
+          Quantity is required
+        </span>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Delivery Date</label>
+        <input type="date" [(ngModel)]="order.deliveryDate" name="deliveryDate" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"> 
+        <span *ngIf="orderForm.controls['deliveryDate']?.invalid && orderForm.controls['deliveryDate']?.touched" class="text-red-500 text-sm">
+          Delivery date is required
+        </span>
+      </div>
+       
+        <div class="flex gap-2">
+            <label class="block text-sm font-medium text-gray-700 mb-1">Delivery Address</label>
+            <input type="text" [(ngModel)]="order.deliveryAddress" name="deliveryAddress" required class="w-full px-3 py-2 border border-gray-300 rounded-lg">      
+            <button type="button" (click)="searchAddress()" class="px-4 py-2 bg-blue-400 text-white rounded-lg hover:bg-blue-200">search</button>
+          </div>
+
+        <div id="map" class="h-64 w-full mt-2 rounded-lg"></div>
+
+          <div>
+    <label class="block text-sm font-medium text-gray-700 mb-1">Payment Method</label>
+    <div class="relative">
+      <button type="button"
+              (click)="showPaymentDropdown = !showPaymentDropdown"
+              class="w-full px-4 py-2.5  border border-gray-300 rounded-lg text-left flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <span [class]="order.paymentMethod ? 'text-white' : 'text-white' ">
+          {{ order.paymentMethod || 'Select payment method' }}
+        </span>
+        <svg class="w-5 h-5 text-gray-400 transition-transform"
+             [class.rotate-180]="showPaymentDropdown"
+             fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+      </button>
+
+      <div *ngIf="showPaymentDropdown" class="w-full mt-2 rounded-lg shadow-lg overflow-hidden" style="background: rgba(255, 255, 255, 0.199);">
+            <div *ngFor="let m of paymentMethods" (click)="selectPayment(m)" class="px-4 py-3 cursor-pointer flex items-center justify-between transition-colors hover:bg-blue-500/20" [style.background]="order.paymentMethod === m ? 'rgba(100,150,255,0.2)' : 'transparent'">
+                  <span class="text-white">{{ m }}</span>
+                  <svg *ngIf="order.paymentMethod === m" class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 0 1 0 1.414l-8 8a1 1 0 0 1-1.414 0l-4-4a1 1 0 0 1 1.414-1.414L8 12.586l7.293-7.293a1 1 0 0 1 1.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                </div>
+              </div>
+             </div>
+          <span *ngIf="orderForm.controls['paymentMethod']?.invalid && orderForm.controls['paymentMethod']?.touched" class="text-red-500 text-sm">
+            Payment method is required
+          </span>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Contact Phone Number</label>
+        <input type="number" [(ngModel)]="order.contactPhone" name="contactPhone" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2focus:ring-blue-500">
+        <span *ngIf="orderForm.controls['contactPhone']?.invalid && orderForm.controls['contactPhone']?.touched" class="text-red-500 text-sm">
+            Contact phone is required
+        </span>
+      </div>
+
+      <div class="flex gap-4 pt-4">
+       <button type="submit" [disabled]="!orderForm.valid" class="px-6 py-2 bg-blue-400 text-white rounded-lg hover:bg-blue-200 disabled:bg-gray-400">{{ isEditMode ? 'Update' : 'Create' }}</button>
+        <a routerLink="/lists" class="px-6 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400">Cancel</a>
+        <span *ngIf="orderForm.controls['customerName']?.invalid && orderForm.controls['customerName']?.touched" class="text-red-500 text-sm">
+          Client name is required
+        </span>
+      </div>
+    </form>
+  </div>
