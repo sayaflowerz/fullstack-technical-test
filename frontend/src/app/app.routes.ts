@@ -8,5 +8,5 @@ export const routes: Routes = [
   { path: 'home', component: Home },
   { path: 'lists', component: List },
   { path: 'orders', component: Form },
-  { path: 'orders/:id', component: Form }
+  { path: 'orders/:id', component: Form } //Especifico para el mododo ediatar que esta dentro del componente form
 ];

@@ -44,17 +44,21 @@ export class Form implements OnInit, AfterViewInit {
 
   ngOnInit() {
     const idParam = this.route.snapshot.paramMap.get('id');
+    console.log('idParam:', idParam);
     if (idParam) {
       this.orderId = +idParam;
       this.isEditMode = true;
+      console.log('modo edicion, id:', this.orderId);
       this.loadOrder();
     }
   }
 
   loadOrder() {
+    console.log('???cargando orden FUCNIONA? ');
     if (this.orderId) {
       this.orderService.getById(this.orderId).subscribe({
         next: (data) => {
+          console.log('orden cargada:', data);
           this.order = data;
           if (this.order.deliveryDate) {
             this.order.deliveryDate = this.order.deliveryDate.split('T')[0];

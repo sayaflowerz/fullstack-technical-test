@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { OrderService, Order } from '../../services/order';
 import Swal from 'sweetalert2';
 
+
+//"ssr": false, a veces genera errores 
 @Component({
   selector: 'app-list',
   imports: [CommonModule, RouterLink, FormsModule],
@@ -29,7 +31,7 @@ export class List implements OnInit {
       next: (data) => {
         console.log('Datos recibidos:', data);
         this.orders = data;
-        this.cdr.detectChanges();  // Me aseguro de que la vista se actualice, forzando a angular a detectar cambios
+        this.cdr.detectChanges();  // LOGS para forzar a angular a detectar cambios
       },
       error: (err) => console.error('Error loading orders:', err)
     });
@@ -43,6 +45,7 @@ export class List implements OnInit {
       o.customerId.toLowerCase().includes(term)
     );
   }
+//Decidi usar sweetalert2 para las alertas de confirmacion, porque usando window.confirm no podia personalizar los botones o me generaba error
 
  
   deleteOrder(id: number) {
