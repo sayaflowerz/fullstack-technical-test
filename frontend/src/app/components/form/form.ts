@@ -124,6 +124,7 @@ export class Form implements OnInit, AfterViewInit {
         shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
       });
 
+    //cambio :)
       this.initMap();
     }
   }
